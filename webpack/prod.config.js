@@ -1,5 +1,4 @@
 import merge from 'webpack-merge';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 import baseConfig from './base.config';
 
@@ -7,7 +6,8 @@ export default merge(baseConfig, {
   mode: 'production',
   devtool: 'none',
   output: {
-    filename: '[name].[contenthash].js'
+    filename: '[name].[contenthash].js',
+    publicPath: '/terms-and-conditions'
   },
   optimization: {
     moduleIds: 'hashed',
@@ -24,20 +24,5 @@ export default merge(baseConfig, {
         }
       }
     }
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/entrypoints/main/index.html',
-      filename: 'index.html',
-      favicon: './src/images/favicon.ico',
-      base: '/terms-and-conditions',
-      chunks: ['main']
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/entrypoints/auth/index.html',
-      filename: 'auth.html',
-      favicon: './src/images/favicon.ico',
-      base: '/terms-and-conditions'
-    })
-  ]
+  }
 });
