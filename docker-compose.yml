@@ -4,7 +4,7 @@ services:
   app:
     build: .
     ports:
-      - 8181:8000
+      - 8181:8080
     environment:
       - ENV
       - OIDC_ISSUER

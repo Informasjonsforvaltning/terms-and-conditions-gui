@@ -6,7 +6,8 @@ export default merge(baseConfig, {
   mode: 'production',
   devtool: 'none',
   output: {
-    filename: '[name].[contenthash].js'
+    filename: '[name].[contenthash].js',
+    publicPath: '/terms-and-conditions/'
   },
   optimization: {
     moduleIds: 'hashed',
