@@ -95,7 +95,8 @@ export default {
       template: './src/entrypoints/auth/index.html',
       filename: 'auth.html',
       favicon: './src/images/favicon.ico',
-      base: '/'
+      base: '/',
+      chunks: []
     })
   ]
 };
