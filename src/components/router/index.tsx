@@ -10,13 +10,13 @@ import Footer from '../footer';
 import ProtectedRoute from '../protected-route';
 import AbsoluteRedirect from '../absolute-redirect';
 
-import { Path } from '../../types/enums';
+import { Path, Environment } from '../../types/enums';
 
 interface Props {
   history?: History;
 }
 
-const { FDK_REGISTRATION_BASE_URI } = env;
+const { ENV, FDK_REGISTRATION_BASE_URI } = env;
 
 /* istanbul ignore next */
 const pages = {
@@ -42,7 +42,9 @@ const Router: FC<Props> = ({ history }) => {
           <Switch>
             <ProtectedRoute
               exact
-              path={Path.ROOT}
+              path={`${
+                ENV === Environment.DEVELOPMENT ? '' : '/terms-and-conditions'
+              }${Path.ROOT}`}
               component={pages.root.component}
               fallback={pages.root.fallback}
             />
