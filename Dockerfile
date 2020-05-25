@@ -29,4 +29,4 @@ COPY --chown=app:app --from=build /app/dist ./
 COPY --chown=app:app entrypoint.sh config.template.js ./
 RUN dos2unix entrypoint.sh && chmod +x entrypoint.sh
 ENTRYPOINT [ "./entrypoint.sh" ]
-EXPOSE 8000
+EXPOSE 8080

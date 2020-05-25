@@ -20,7 +20,7 @@ An interface for FDK terms and conditions.
 - Build a Docker container using the following command:
   - `docker build -t terms-and-conditions-gui .`
 - Run the container using the following comand:
-  - `docker run -d -p 8181:8000 -e ENV -e OIDC_ISSUER -e FDK_REGISTRATION_BASE_URI -e TERMS_AND_CONDITIONS_HOST terms-and-conditions-gui`
+  - `docker run -d -p 8181:8080 -e ENV -e OIDC_ISSUER -e FDK_REGISTRATION_BASE_URI -e TERMS_AND_CONDITIONS_HOST terms-and-conditions-gui`
 
 #### Running application using Docker Compose
 
