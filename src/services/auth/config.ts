@@ -10,7 +10,7 @@ const config: AuthConfig = {
   clientId: 'terms-and-conditions-gui',
   redirectUri: href,
   logoutRedirectUri: origin,
-  silentCheckSsoRedirectUri: `${origin}/terms-and-conditions/auth`
+  silentCheckSsoRedirectUri: `${origin}/terms-and-conditions/auth.html`
 };
 
 export default config;
