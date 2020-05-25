@@ -138,7 +138,7 @@ const TermsAndConditionsPage: FC<Props> = ({
             </SC.ButtonGroup>
             {!latestTermsAccepted && (
               <SC.Banner variant={Variant.WARNING}>
-                Det kan ikke opprettes kataloger for din virksomhet derson
+                Det kan ikke opprettes kataloger for din virksomhet dersom
                 vilkår og betingelser ikke godtas.
               </SC.Banner>
             )}
