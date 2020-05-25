@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    ports:
+      - 8181:8000
+    environment:
+      - ENV
+      - OIDC_ISSUER
+      - FDK_REGISTRATION_BASE_URI
+      - TERMS_AND_CONDITIONS_HOST
