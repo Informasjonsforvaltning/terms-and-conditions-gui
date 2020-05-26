@@ -9,8 +9,7 @@ const Footer: FC = () => (
     <SC.Illustration />
     <SC.Content>
       <SC.Column>
-        Felles datakatalog er et samarbeid mellom Digitaliseringsdirektoratet,
-        Brønnøysundregistrene og øvrige SKATE-etater
+        Digitaliseringsdirektoratet forvalter Felles datakatalog.
       </SC.Column>
       <SC.Column>
         <SC.Link href='https://www.digdir.no/om-oss/personvernerklaering/706'>
