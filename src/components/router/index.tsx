@@ -1,12 +1,12 @@
 import React, { memo, FC, Suspense, lazy } from 'react';
 import { BrowserRouter, Router as BaseRouter, Switch } from 'react-router-dom';
 import { History } from 'history';
+import Footer from '@fellesdatakatalog/internal-footer';
 
 import env from '../../env';
 
 import Root from '../root';
 import Header from '../header';
-import Footer from '../footer';
 import ProtectedRoute from '../protected-route';
 import AbsoluteRedirect from '../absolute-redirect';
 
@@ -51,8 +51,8 @@ const Router: FC<Props> = ({ history }) => {
             <AbsoluteRedirect to={FDK_REGISTRATION_BASE_URI} />
           </Switch>
         </Suspense>
-        <Footer />
       </Root>
+      <Footer />
     </AppRouter>
   );
 };
