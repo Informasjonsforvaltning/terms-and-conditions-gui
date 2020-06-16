@@ -1,7 +1,9 @@
 FROM node:alpine AS build
+ARG GITHUB_TOKEN
 RUN mkdir /app
 WORKDIR /app
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json .npmrc ./
+RUN echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> .npmrc
 RUN npm set progress=false && \
   npm config set depth 0 && \
   npm ci
