@@ -35,4 +35,6 @@ An interface for FDK terms and conditions.
 - `OIDC_ISSUER` - OIDC issuer URI
 - `FDK_REGISTRATION_BASE_URI` - FDK registraion main page URL
 - `TERMS_AND_CONDITIONS_HOST` - Terms and conditions API hostname
+- `SEARCH_HOST` - FDK portal main page URL
+- `ADMIN_GUI_HOST` - FDK admin main page URL
   

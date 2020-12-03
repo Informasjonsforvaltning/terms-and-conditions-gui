@@ -10,3 +10,5 @@ services:
       - OIDC_ISSUER
       - FDK_REGISTRATION_BASE_URI
       - TERMS_AND_CONDITIONS_HOST
+      - SEARCH_HOST
+      - ADMIN_GUI_HOST
