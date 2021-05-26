@@ -22,7 +22,7 @@ export const expectCorrectRootElement = async (
   Component: ComponentType,
   tagName: string,
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   cleanup();
 
@@ -41,7 +41,7 @@ export const expectCorrectRootElement = async (
 export const expectNoRootElement = async (
   Component: ComponentType,
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   cleanup();
 
@@ -58,7 +58,7 @@ export const expectNoChildren = async (
   Component: ComponentType,
   hasRootElement: boolean = true,
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   cleanup();
 
@@ -84,7 +84,7 @@ export const expectNoChildren = async (
 export const expectSingleTextChild = async (
   Component: ComponentType,
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   cleanup();
 
@@ -107,7 +107,7 @@ export const expectSingleTextChild = async (
 export const expectSingleElementChild = async (
   Component: ComponentType,
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   cleanup();
 
@@ -135,7 +135,7 @@ export const expectSingleElementChild = async (
 export const expectMultipleElementChildren = async (
   Component: ComponentType,
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   cleanup();
 
@@ -164,7 +164,7 @@ export const expectMultipleElementChildren = async (
 export const expectTextAndElementChildren = async (
   Component: ComponentType,
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   cleanup();
 
@@ -204,7 +204,7 @@ export const expectStyleRules = async (
   Component: ComponentType,
   styleRules: StyleRule[],
   renderer: Renderer = render,
-  renderOptions: object = {}
+  renderOptions: Record<string, unknown> = {}
 ) => {
   cleanup();
 
