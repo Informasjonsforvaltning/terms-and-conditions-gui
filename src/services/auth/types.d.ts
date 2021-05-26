@@ -1,25 +1,16 @@
-import { Resource, Role } from './enums';
+export interface UserProfile {
+  id: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  name: string;
+  authorities: string[];
+  fdkTerms: string;
+  orgTerms: string[];
+}
 
 export interface ResourceRole {
-  resource: Resource;
+  resource: string;
   resourceId: string;
-  role: Role;
-}
-
-export interface OrganizationRole {
-  orgNr: string;
   role: string;
-}
-
-export interface AuthConfig {
-  oidcIssuer: string;
-  clientId: string;
-  redirectUri: string;
-  logoutRedirectUri: string;
-  silentCheckSsoRedirectUri?: string;
-}
-
-export interface User {
-  username: string;
-  name: string;
 }

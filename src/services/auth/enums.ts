@@ -1,9 +1,3 @@
-export enum Resource {
-  ORGANIZATION = 'organization',
-  SYSTEM = 'system'
-}
-
-export enum Role {
-  ADMIN = 'admin',
-  READ = 'read'
+export enum OidcError {
+  LOGIN_REQUIRED = 'login_required'
 }
