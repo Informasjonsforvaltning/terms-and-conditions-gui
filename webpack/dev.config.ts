@@ -21,11 +21,14 @@ const configuration: Configuration = mergeWithCustomize({
     host: '0.0.0.0',
     port: 8181,
     hot: true,
-    before: app => app.get('/config.js', (_, res) => res.status(204).send()),
+    before: app =>
+      app.get('/terms-and-conditions/config.js', (_, res) =>
+        res.status(204).send()
+      ),
     historyApiFallback: {
       rewrites: [
-        { from: /^\/auth/, to: '/auth.html' },
-        { from: /./, to: '/index.html' }
+        { from: /^\/auth/, to: '/terms-and-conditions/auth.html' },
+        { from: /./, to: '/terms-and-conditions/index.html' }
       ]
     }
   },
