@@ -1,10 +1,11 @@
-import { Environment } from './enums';
+import type { Namespace } from './enums';
 
 export interface EnvironmentVariables {
-  ENV: Environment;
+  NAMESPACE: Namespace;
   OIDC_ISSUER: string;
   FDK_REGISTRATION_BASE_URI: string;
   TERMS_AND_CONDITIONS_HOST: string;
   SEARCH_HOST: string;
   ADMIN_GUI_HOST: string;
+  SKE_THEME_PROFILE: string;
 }
