@@ -1,9 +1,12 @@
-import React, { memo, FC, PropsWithChildren } from 'react';
+import React, { memo, FC } from 'react';
+import { compose } from 'redux';
 import { Helmet } from 'react-helmet';
 
 import SC from './styled';
 
-const Root: FC<PropsWithChildren<any>> = ({ children, ...props }) => (
+interface Props {}
+
+const Root: FC<Props> = ({ children, ...props }) => (
   <>
     <Helmet>
       <title>Felles datakatalog | Vilkår og betingelser</title>
@@ -16,4 +19,4 @@ const Root: FC<PropsWithChildren<any>> = ({ children, ...props }) => (
   </>
 );
 
-export default memo(Root);
+export default compose<FC>(memo)(Root);
