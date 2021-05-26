@@ -1,16 +1,17 @@
-import { AuthConfig } from './types';
+import type { UserManagerSettings } from 'oidc-client';
 
 import env from '../../env';
 
-const { OIDC_ISSUER: oidcIssuer } = env;
-const { href, origin } = location;
+const { OIDC_ISSUER, FDK_REGISTRATION_BASE_URI } = env;
 
-const config: AuthConfig = {
-  oidcIssuer,
-  clientId: 'terms-and-conditions-gui',
-  redirectUri: href,
-  logoutRedirectUri: origin,
-  silentCheckSsoRedirectUri: `${origin}/terms-and-conditions/auth.html`
+const userManagerSettings: UserManagerSettings = {
+  authority: OIDC_ISSUER,
+  client_id: 'terms-and-conditions-gui',
+  redirect_uri: `${location.origin}/auth`,
+  post_logout_redirect_uri: FDK_REGISTRATION_BASE_URI,
+  response_type: 'code',
+  scope: 'openid authorities profile email',
+  revokeAccessTokenOnSignout: true
 };
 
-export default config;
+export default userManagerSettings;
