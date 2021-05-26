@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
-
-import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
+import CheckIcon from '@material-ui/icons/CheckOutlined';
 
 const Checkbox = styled.div``;
 
@@ -9,24 +8,27 @@ const Label = styled.label`
   align-items: flex-start;
 `;
 
-const Tick = styled(CheckOutlinedIcon)<{
-  checked?: boolean;
-  disabled?: boolean;
-}>`
+const Tick = styled(CheckIcon)<{ checked?: boolean; disabled?: boolean }>`
   height: 20px !important;
   width: 20px !important;
   margin-right: 10px;
   border: 2px solid ${({ theme }) => theme.fdk.colors.neutrals.darker};
   border-radius: 3px;
   background: white;
-  color: white;
   cursor: pointer;
+
+  & > path {
+    color: white;
+  }
 
   ${({ checked }) =>
     checked &&
     css`
       background: ${({ theme }) => theme.fdk.colors.neutrals.darker};
-      color: white;
+
+      & > path {
+        color: white;
+      }
     `}
 
   ${({ disabled }) =>

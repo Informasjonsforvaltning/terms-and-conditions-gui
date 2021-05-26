@@ -1,15 +1,13 @@
-import React, {
-  memo,
-  FC,
-  ComponentPropsWithoutRef,
-  PropsWithChildren
-} from 'react';
+import React, { memo, FC, ComponentPropsWithoutRef } from 'react';
+import { compose } from 'redux';
 
 import SC from './styled';
 
-interface Props extends ComponentPropsWithoutRef<'input'> {}
+interface ExternalProps extends ComponentPropsWithoutRef<'input'> {}
 
-const Checkbox: FC<PropsWithChildren<Props>> = ({
+interface Props extends ExternalProps {}
+
+const Checkbox: FC<Props> = ({
   id,
   name,
   checked,
@@ -34,4 +32,4 @@ const Checkbox: FC<PropsWithChildren<Props>> = ({
   </SC.Checkbox>
 );
 
-export default memo(Checkbox);
+export default compose<FC<ExternalProps>>(memo)(Checkbox);
