@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
-import { hot } from 'react-hot-loader/root';
 import { Provider as ReduxProvider } from 'react-redux';
 import ThemeProvider from '@fellesdatakatalog/theme';
 
-import AuthProvider from '../../providers/auth';
+import AuthProvider from '../../../providers/auth';
 
-import store from './redux/store';
+import store from '../redux/store';
 
-import GlobalStyles from './styles';
-import theme from './styles/theme';
+import GlobalStyles from '../styles';
+import theme from '../styles/theme';
 
 import Router from '../router';
 
@@ -23,4 +22,4 @@ const App: FC = () => (
   </ThemeProvider>
 );
 
-export default hot(App);
+export default App;

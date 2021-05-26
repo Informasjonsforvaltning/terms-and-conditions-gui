@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { theme, Colour } from '@fellesdatakatalog/theme';
 
 export default css`
   html,
@@ -9,6 +10,8 @@ export default css`
   body {
     overflow-x: hidden;
     overflow-y: scroll;
+    background: ${theme.colour(Colour.NEUTRAL, 'N10')};
+    line-height: 1.5;
   }
 
   body,
@@ -20,5 +23,9 @@ export default css`
 
   body.no-scroll {
     overflow: hidden;
+  }
+
+  * {
+    color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   }
 `;

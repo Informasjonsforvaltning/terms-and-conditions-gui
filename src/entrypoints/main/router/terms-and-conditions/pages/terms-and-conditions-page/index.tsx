@@ -1,23 +1,27 @@
 import React, { memo, FC, useState, useEffect } from 'react';
 import { compose } from 'redux';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { Link as RouteLink, useParams } from 'react-router-dom';
 import parse from 'html-react-parser';
+import Link from '@fellesdatakatalog/link';
+import Breadcrumbs, { Breadcrumb } from '@fellesdatakatalog/breadcrumbs';
+import { Severity } from '@fellesdatakatalog/alert';
+import Button from '@fellesdatakatalog/button';
 
-import env from '../../env';
+import env from '../../../../../../env';
 
-import { withAuth, Props as AuthProps } from '../../providers/auth';
+import { withAuth, Props as AuthProps } from '../../../../../../providers/auth';
 
 import withTermsAndConditions, {
   Props as TermsAndConditionsProps
-} from '../with-terms-and-conditions';
+} from '../../../../../../components/with-terms-and-conditions';
 
-import Breadcrumbs from '../breadcrumbs';
-import Button from '../button';
-import Checkbox from '../checkbox';
-import { Variant } from '../banner';
-import AbsoluteRedirect from '../absolute-redirect';
+import Checkbox from '../../../../../../components/checkbox';
+import AbsoluteRedirect from '../../../../../../components/absolute-redirect';
 
-import { dateStringToDate, formatDate } from '../../utils/date-utils';
+import {
+  dateStringToDate,
+  formatDate
+} from '../../../../../../utils/date-utils';
 
 import SC from './styled';
 
@@ -27,33 +31,28 @@ interface RouteParams {
   organizationId: string;
 }
 
-interface Props
-  extends AuthProps,
-    TermsAndConditionsProps,
-    RouteComponentProps<RouteParams> {}
+interface Props extends AuthProps, TermsAndConditionsProps {}
 
 const TermsAndConditionsPage: FC<Props> = ({
   authService,
   termsAndConditions,
   acceptation,
-  match: {
-    params: { organizationId }
-  },
   termsAndConditionsActions: {
     getLatestTermsAndConditionsRequested: getLatestTermsAndConditions,
-    getLatestAcceptedTermsAndConditionsRequested: getLatestAcceptedTermsAndConditions,
+    getLatestAcceptedTermsAndConditionsRequested:
+      getLatestAcceptedTermsAndConditions,
     acceptTermsAndConditionsRequested: acceptTermsAndConditions
   }
 }) => {
+  const { organizationId } = useParams<RouteParams>();
+
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const isAdminUser = authService.hasOrganizationAdminPermission(
-    organizationId
-  );
-  const latestTermsAccepted = authService.hasAcceptedLatestTermsAndConditions(
-    organizationId
-  );
+  const isAdminUser =
+    authService.hasOrganizationAdminPermission(organizationId);
+  const latestTermsAccepted =
+    authService.hasAcceptedLatestTermsAndConditions(organizationId);
 
   const hasOrganisationAccess =
     authService.hasOrganizationReadPermission(organizationId) ||
@@ -61,7 +60,7 @@ const TermsAndConditionsPage: FC<Props> = ({
     authService.hasOrganizationAdminPermission(organizationId);
 
   const acceptorName =
-    authService.getUser()?.name === acceptation?.acceptorName
+    authService.getUserProfile()?.name === acceptation?.acceptorName
       ? 'Du'
       : acceptation?.acceptorName;
   const acceptDate = formatDate(
@@ -74,7 +73,7 @@ const TermsAndConditionsPage: FC<Props> = ({
     acceptTermsAndConditions(
       {
         orgId: organizationId,
-        acceptorName: authService.getUser()?.name ?? '',
+        acceptorName: authService.getUserProfile()?.name ?? '',
         acceptDate: new Date().toISOString(),
         acceptedVersion: termsAndConditions?.version ?? 'latest'
       },
@@ -89,28 +88,28 @@ const TermsAndConditionsPage: FC<Props> = ({
 
   return hasOrganisationAccess ? (
     <>
-      <Breadcrumbs
-        breadcrumbs={[
-          {
-            title: 'Alle kataloger',
-            url: FDK_REGISTRATION_BASE_URI,
-            external: true
-          },
-          { title: 'Vilkår og betingelser', current: true }
-        ]}
-      />
-      <SC.Container>
+      <Breadcrumbs as={SC.Breadcrumbs}>
+        <Breadcrumb>
+          <Link to={FDK_REGISTRATION_BASE_URI} as={RouteLink}>
+            Alle kataloger
+          </Link>
+        </Breadcrumb>
+        <Breadcrumb active>Vilkår og betingelser</Breadcrumb>
+      </Breadcrumbs>
+      <SC.Page>
         <SC.Title>Bruksvilkår for registrering i Felles datakatalog</SC.Title>
         {latestTermsAccepted && (
-          <SC.Banner variant={Variant.SUCCESS}>
-            {acceptorName} aksepterte bruksvilkår på vegne av din virksomhet
-            {acceptDate && ` ${acceptDate}`}. Dersom din virksomhet ikke ønsker
-            oppføring i Felles datakatalog må du ta kontakt med forvalter av
-            katalogen på{' '}
-            <a href='mailto:fellesdatakatalog@digdir.no'>
-              fellesdatakatalog@digdir.no
-            </a>
-          </SC.Banner>
+          <SC.Alert severity={Severity.SUCCESS}>
+            <div>
+              {acceptorName} aksepterte bruksvilkår på vegne av din virksomhet
+              {acceptDate && ` ${acceptDate}`}. Dersom din virksomhet ikke
+              ønsker oppføring i Felles datakatalog må du ta kontakt med
+              forvalter av katalogen på{' '}
+              <Link href='mailto:fellesdatakatalog@digdir.no'>
+                fellesdatakatalog@digdir.no
+              </Link>
+            </div>
+          </SC.Alert>
         )}
         <SC.TermsAndConditions>
           {parse(termsAndConditions?.text ?? '')}
@@ -137,14 +136,16 @@ const TermsAndConditionsPage: FC<Props> = ({
               </Button>
             </SC.ButtonGroup>
             {!latestTermsAccepted && (
-              <SC.Banner variant={Variant.WARNING}>
-                Det kan ikke opprettes kataloger for din virksomhet dersom
-                vilkår og betingelser ikke godtas.
-              </SC.Banner>
+              <SC.Alert severity={Severity.WARNING}>
+                <div>
+                  Det kan ikke opprettes kataloger for din virksomhet dersom
+                  vilkår og betingelser ikke godtas.
+                </div>
+              </SC.Alert>
             )}
           </SC.Agreement>
         )}
-      </SC.Container>
+      </SC.Page>
     </>
   ) : (
     <AbsoluteRedirect to={FDK_REGISTRATION_BASE_URI} />
@@ -154,6 +155,5 @@ const TermsAndConditionsPage: FC<Props> = ({
 export default compose<FC>(
   memo,
   withAuth,
-  withRouter,
   withTermsAndConditions
 )(TermsAndConditionsPage);
