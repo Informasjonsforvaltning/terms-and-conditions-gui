@@ -1,30 +1,19 @@
 import React, { memo, ComponentType, FC, Fragment } from 'react';
+import { compose } from 'redux';
 import { Route, RouteProps } from 'react-router-dom';
 
-import { withAuth, Props as AuthProps } from '../../providers/auth';
-
-interface Props extends AuthProps, RouteProps {
-  component: ComponentType<any>;
-  fallback: ComponentType<any>;
+interface ExternalProps extends RouteProps {
+  isAuthorised: boolean;
+  component?: ComponentType<any>;
+  fallback?: ComponentType<any>;
 }
 
-const ProtectedRoute: FC<Props> = ({
-  authService,
-  component: Component = Fragment,
-  fallback: Fallback = Fragment,
-  children,
-  ...props
-}) => (
-  <Route
-    {...props}
-    render={(routeProps: RouteProps) =>
-      authService.isAuthenticated() ? (
-        <Component {...routeProps} />
-      ) : (
-        <Fallback {...routeProps} />
-      )
-    }
-  />
-);
+interface Props extends ExternalProps {}
 
-export default memo(withAuth(ProtectedRoute));
+const ProtectedRoute: FC<Props> = ({
+  isAuthorised,
+  component = Fragment,
+  fallback: Fallback = Fragment
+}) => (isAuthorised ? <Route component={component} /> : <Fallback />);
+
+export default compose<FC<ExternalProps>>(memo)(ProtectedRoute);
