@@ -1,8 +1,6 @@
-export enum Environment {
+export enum Namespace {
   DEVELOPMENT = 'development',
-  PRODUCTION = 'production'
-}
-
-export enum Path {
-  ROOT = '/:organizationId(\\d{9})'
+  STAGING = 'staging',
+  DEMO = 'demo',
+  PRODUCTION = 'prod'
 }
