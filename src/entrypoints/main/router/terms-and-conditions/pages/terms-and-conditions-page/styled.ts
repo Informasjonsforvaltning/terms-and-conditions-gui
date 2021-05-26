@@ -1,12 +1,21 @@
 import styled from 'styled-components';
+import { theme, Colour } from '@fellesdatakatalog/theme';
+import AlertBase from '@fellesdatakatalog/alert';
 
-import Common from '../common/styled';
-import BannerBase from '../banner';
+const Breadcrumbs = styled.nav`
+  margin-top: -${theme.spacing('S16')};
+  margin-bottom: ${theme.spacing('S16')};
+  padding: ${theme.spacing('S10')} 0;
+  border-bottom: 1px solid ${theme.colour(Colour.NEUTRAL, 'N30')};
+`;
 
-const Container = styled(Common.Container)`
+const Page = styled.div`
+  width: 100%;
+  max-width: 1140px;
   flex-grow: 1;
   margin-top: 40px;
   margin: 0 auto;
+  overflow-wrap: break-word;
 `;
 
 const Title = styled.h1`
@@ -25,8 +34,8 @@ const TermsAndConditions = styled.section`
     margin-top: 20px;
 
     & a {
-      border-bottom: 1px solid ${({ theme }) => theme.fdk.colors.text.default};
-      color: ${({ theme }) => theme.fdk.colors.text.default};
+      border-bottom: 1px solid ${({ theme: t }) => t.fdk.colors.text.default};
+      color: ${({ theme: t }) => t.fdk.colors.text.default};
 
       &:hover {
         text-decoration: none;
@@ -42,22 +51,23 @@ const Agreement = styled.div`
 
 const ButtonGroup = styled.div`
   display: flex;
-  margin-top: 20px;
+  margin: ${theme.spacing('S24')} 0;
 
   & > *:nth-of-type(n + 2) {
     margin-left: 8px;
   }
 `;
 
-const Banner = styled(BannerBase)`
+const Alert = styled(AlertBase)`
   margin-top: 40px;
 `;
 
 export default {
-  Container,
+  Breadcrumbs,
+  Page,
   Title,
   TermsAndConditions,
   Agreement,
   ButtonGroup,
-  Banner
+  Alert
 };

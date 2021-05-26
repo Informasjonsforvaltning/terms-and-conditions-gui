@@ -20,4 +20,6 @@ const store = createStore(
 
 sagaMiddleware.run(RootSaga);
 
+(module as any).hot?.accept();
+
 export default store;
