@@ -10,12 +10,17 @@ import {
   ACCEPT_TERMS_AND_CONDITIONS_REQUESTED
 } from './action-types';
 
+import AuthService from '../../../services/auth';
+
 const { TERMS_AND_CONDITIONS_HOST } = env;
 
 function* getLatestTermsAndConditionsRequested() {
   try {
-    const auth = yield getContext('auth');
-    const authorization = yield call([auth, auth.getAuthorizationHeader]);
+    const auth: typeof AuthService = yield getContext('auth');
+    const authorization: string = yield call([
+      auth,
+      auth.getAuthorizationHeader
+    ]);
 
     const { data, message } = yield call(
       axios.get,
@@ -44,8 +49,11 @@ function* getLatestAcceptedTermsAndConditionsRequested({
   payload: { organizationId }
 }: ReturnType<typeof actions.getLatestAcceptedTermsAndConditionsRequested>) {
   try {
-    const auth = yield getContext('auth');
-    const authorization = yield call([auth, auth.getAuthorizationHeader]);
+    const auth: typeof AuthService = yield getContext('auth');
+    const authorization: string = yield call([
+      auth,
+      auth.getAuthorizationHeader
+    ]);
 
     const { data, message } = yield call(
       axios.get,
@@ -76,8 +84,11 @@ function* acceptTermsAndConditionsRequested({
   payload: { acceptation, onSuccess }
 }: ReturnType<typeof actions.acceptTermsAndConditionsRequested>) {
   try {
-    const auth = yield getContext('auth');
-    const authorization = yield call([auth, auth.getAuthorizationHeader]);
+    const auth: typeof AuthService = yield getContext('auth');
+    const authorization: string = yield call([
+      auth,
+      auth.getAuthorizationHeader
+    ]);
 
     const { status, message } = yield call(
       axios.post,

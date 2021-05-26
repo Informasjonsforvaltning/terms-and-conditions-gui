@@ -4,11 +4,11 @@ import { bindActionCreators, Dispatch } from 'redux';
 
 import * as actions from './redux/actions';
 
-import { TermsAndConditions, Acceptation } from '../../types';
+import type { TermsAndConditions, Acceptation } from '../../types';
 
 export interface Props {
-  termsAndConditions: TermsAndConditions | null;
-  acceptation: Acceptation | null;
+  termsAndConditions?: TermsAndConditions;
+  acceptation?: Acceptation;
   termsAndConditionsActions: typeof actions;
 }
 
@@ -17,9 +17,10 @@ const withDataService = (Component: ComponentType<any>) => {
 
   const mapStateToProps = (state: any) => ({
     termsAndConditions:
-      state.TermsAndConditionsReducer.get('termsAndConditions')?.toJS() ?? null,
+      state.TermsAndConditionsReducer.get('termsAndConditions')?.toJS() ??
+      undefined,
     acceptation:
-      state.TermsAndConditionsReducer.get('acceptation')?.toJS() ?? null
+      state.TermsAndConditionsReducer.get('acceptation')?.toJS() ?? undefined
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({
