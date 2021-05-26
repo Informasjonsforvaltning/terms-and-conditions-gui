@@ -1,17 +1,20 @@
-import path from 'path';
+import { Configuration, ProvidePlugin } from 'webpack';
+import { resolve } from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
-export default {
+const configuration: Configuration = {
   entry: {
-    main: './src/entrypoints/main/index.tsx'
+    main: './src/entrypoints/main/index.tsx',
+    auth: './src/entrypoints/auth/index.ts'
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
-    publicPath: '/'
+    path: resolve(__dirname, '..', 'dist'),
+    publicPath: '/',
+    clean: true
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    fallback: { path: require.resolve('path-browserify') }
   },
   optimization: {
     runtimeChunk: 'single',
@@ -25,10 +28,16 @@ export default {
       cacheGroups: {
         default: false,
         mainVendors: {
-          test: /[\\/]node_modules[\\/]/,
+          test: ({ resource = '' }: any) => resource.includes('node_modules'),
           name: 'main.vendors',
           filename: '[name].bundle.js',
           chunks: ({ name }) => name === 'main'
+        },
+        authVendors: {
+          test: ({ resource = '' }: any) => resource.includes('node_modules'),
+          name: 'auth.vendors',
+          filename: '[name].bundle.js',
+          chunks: ({ name }) => name === 'auth'
         }
       }
     }
@@ -41,13 +50,13 @@ export default {
           {
             loader: 'babel-loader',
             options: {
-              configFile: path.resolve(__dirname, '../babel.config.js')
+              configFile: resolve(__dirname, '..', 'babel.config.js')
             }
           },
           {
             loader: 'ts-loader',
             options: {
-              configFile: path.resolve(__dirname, '../tsconfig.json')
+              configFile: resolve(__dirname, '..', 'tsconfig.json')
             }
           }
         ],
@@ -94,7 +103,6 @@ export default {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/entrypoints/main/index.html',
       filename: 'index.html',
@@ -107,7 +115,13 @@ export default {
       filename: 'auth.html',
       favicon: './src/images/favicon.ico',
       base: '/',
-      chunks: []
+      chunks: ['auth']
+    }),
+    new ProvidePlugin({
+      process: 'process',
+      util: 'util'
     })
   ]
 };
+
+export default configuration;
