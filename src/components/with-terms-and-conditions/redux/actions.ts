@@ -10,7 +10,7 @@ import {
   ACCEPT_TERMS_AND_CONDITIONS_FAILED
 } from './action-types';
 
-import { TermsAndConditions, Acceptation } from '../../../types';
+import type { TermsAndConditions, Acceptation } from '../../../types';
 
 export function getLatestTermsAndConditionsRequested() {
   return {
