@@ -1,12 +1,11 @@
-FROM node:14-alpine AS build
-RUN mkdir /app
+FROM node:lts AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm set progress=false && \
   npm config set depth 0 && \
   npm ci
 RUN npm audit --production --audit-level=moderate
-COPY babel.config.js tsconfig.json jest.config.js ./
+COPY babel.config.js tsconfig.json tsconfig.test.json tsconfig.webpack.json jest.config.js ./
 COPY webpack ./webpack
 COPY test ./test
 COPY src ./src
@@ -14,7 +13,7 @@ RUN npm test
 RUN npm run build:prod
 
 FROM nginx:alpine
-RUN mkdir /app
+WORKDIR /app
 RUN addgroup -g 1001 -S app && \
   adduser -u 1001 -S app -G app && \
   chown -R app:app /app && \
@@ -23,7 +22,6 @@ RUN addgroup -g 1001 -S app && \
   chown -R app:app /var/run/nginx.pid && \
   chmod 770 /app
 USER app:app
-WORKDIR /app
 COPY --chown=app:app nginx.conf /etc/nginx/conf.d/default.conf
 COPY --chown=app:app --from=build /app/dist ./
 COPY --chown=app:app entrypoint.sh config.template.js ./
