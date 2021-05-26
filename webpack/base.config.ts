@@ -9,7 +9,7 @@ const configuration: Configuration = {
   },
   output: {
     path: resolve(__dirname, '..', 'dist'),
-    publicPath: '/',
+    publicPath: '/terms-and-conditions/',
     clean: true
   },
   resolve: {
@@ -107,14 +107,14 @@ const configuration: Configuration = {
       template: './src/entrypoints/main/index.html',
       filename: 'index.html',
       favicon: './src/images/favicon.ico',
-      base: '/',
+      base: '/terms-and-conditions/',
       chunks: ['main']
     }),
     new HtmlWebpackPlugin({
       template: './src/entrypoints/auth/index.html',
       filename: 'auth.html',
       favicon: './src/images/favicon.ico',
-      base: '/',
+      base: '/terms-and-conditions/',
       chunks: ['auth']
     }),
     new ProvidePlugin({
