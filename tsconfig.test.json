@@ -8,8 +8,7 @@
       "esnext",
       "dom"
     ],
-    "outDir": "dist",
-    "sourceMap": true,
+    "allowJs": true,
     "esModuleInterop": true,
     "isolatedModules": false,
     "downlevelIteration": true,
@@ -26,6 +25,7 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
+    "resolveJsonModule": true,
     "moduleResolution": "node",
     "types": [
       "node",
@@ -33,14 +33,15 @@
     ],
     "typeRoots": [
       "node_modules/@types",
-      "src/types/*"
+      "test/types/*"
     ]
   },
   "include": [
+    "test",
+    "src/**/__tests__/**/*",
     "src/**/*"
   ],
   "exclude": [
-    "node_modules",
-    "src/**/__tests__/**/*"
+    "node_modules"
   ]
 }
