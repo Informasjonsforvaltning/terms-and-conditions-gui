@@ -114,7 +114,7 @@
     "@fellesdatakatalog/alert": "^0.1.5",
     "@fellesdatakatalog/breadcrumbs": "^0.2.0",
     "@fellesdatakatalog/button": "^0.2.3",
-    "@fellesdatakatalog/internal-footer": "^0.3.6",
+    "@fellesdatakatalog/internal-footer": "^0.3.11",
     "@fellesdatakatalog/internal-header": "^0.4.7",
     "@fellesdatakatalog/link": "^0.2.5",
     "@fellesdatakatalog/theme": "^0.4.3",
