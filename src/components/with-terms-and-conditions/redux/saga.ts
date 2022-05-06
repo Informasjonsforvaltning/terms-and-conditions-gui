@@ -40,7 +40,7 @@ function* getLatestTermsAndConditionsRequested() {
         actions.getLatestTermsAndConditionsFailed(JSON.stringify(message))
       );
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getLatestTermsAndConditionsFailed(e.message));
   }
 }
@@ -75,7 +75,7 @@ function* getLatestAcceptedTermsAndConditionsRequested({
         )
       );
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getLatestAcceptedTermsAndConditionsFailed(e.message));
   }
 }
@@ -110,7 +110,7 @@ function* acceptTermsAndConditionsRequested({
         actions.acceptTermsAndConditionsFailed(JSON.stringify(message))
       );
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.acceptTermsAndConditionsFailed(e.message));
   }
 }
