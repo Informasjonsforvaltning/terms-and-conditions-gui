@@ -97,68 +97,8 @@
     },
     "1070245|@fellesdatakatalog/internal-footer>@skatteetaten/frontend-components>moment": {
       "decision": "ignore",
-      "madeAt": 1651664432211,
-      "expiresAt": 1654256425657
-    },
-    "1070245|@fellesdatakatalog/internal-header>@skatteetaten/frontend-components>moment": {
-      "decision": "ignore",
-      "madeAt": 1651664432212,
-      "expiresAt": 1654256425657
-    },
-    "1070006|@pmmmwh/react-refresh-webpack-plugin>ansi-html": {
-      "decision": "ignore",
-      "madeAt": 1651664434178,
-      "expiresAt": 1654256425657
-    },
-    "1070006|webpack-dev-server>ansi-html": {
-      "decision": "ignore",
-      "madeAt": 1651664434179,
-      "expiresAt": 1654256425657
-    },
-    "1070273|ansi-regex": {
-      "decision": "ignore",
-      "madeAt": 1651664435432,
-      "expiresAt": 1654256425657
-    },
-    "1070274|ansi-regex": {
-      "decision": "ignore",
-      "madeAt": 1651664436668,
-      "expiresAt": 1654256425657
-    },
-    "1070206|async": {
-      "decision": "ignore",
-      "madeAt": 1651664437912,
-      "expiresAt": 1654256425657
-    },
-    "1067342|commitizen>cz-conventional-changelog>minimist": {
-      "decision": "ignore",
-      "madeAt": 1651664439180,
-      "expiresAt": 1654256425657
-    },
-    "1067342|cz-conventional-changelog>commitizen>minimist": {
-      "decision": "ignore",
-      "madeAt": 1651664439180,
-      "expiresAt": 1654256425657
-    },
-    "1067654|react-svg-loader>react-svg-core>svgo>css-select>nth-check": {
-      "decision": "ignore",
-      "madeAt": 1651664440367,
-      "expiresAt": 1654256425657
-    },
-    "1067329|webpack-dev-server>ansi-html>chokidar>glob-parent": {
-      "decision": "ignore",
-      "madeAt": 1651664441573,
-      "expiresAt": 1654256425657
-    },
-    "1067323|webpack-dev-server>ansi-html>chokidar>glob-parent>selfsigned>node-forge": {
-      "decision": "ignore",
-      "madeAt": 1651664442806,
-      "expiresAt": 1654256425657
-    },
-    "1067452|webpack-dev-server>ansi-html>chokidar>glob-parent>selfsigned>node-forge": {
-      "decision": "ignore",
-      "madeAt": 1651664444037,
-      "expiresAt": 1654256425657
+      "madeAt": 1652171053525,
+      "expiresAt": 1654763040503
     }
   },
   "rules": {},

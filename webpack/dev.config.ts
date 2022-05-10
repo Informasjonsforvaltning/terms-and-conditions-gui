@@ -1,3 +1,5 @@
+import type { Configuration as WebpackConfiguration } from 'webpack';
+import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 import { resolve } from 'path';
 import {
   mergeWithCustomize,
@@ -6,11 +8,14 @@ import {
 } from 'webpack-merge';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import type { Configuration } from 'webpack';
 
 import baseConfig from './base.config';
 
-const configuration: Configuration = mergeWithCustomize({
+interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration;
+}
+
+const configuration: Configuration = mergeWithCustomize<Configuration>({
   customizeArray: customizeArray({
     'module.rules': CustomizeRule.Replace
   })
@@ -21,16 +26,10 @@ const configuration: Configuration = mergeWithCustomize({
     host: '0.0.0.0',
     port: 8181,
     hot: true,
-    before: app =>
-      app.get('/terms-and-conditions/config.js', (_, res) =>
+    onBeforeSetupMiddleware: devServer =>
+      devServer.app.get('/terms-and-conditions/config.js', (_, res) =>
         res.status(204).send()
-      ),
-    historyApiFallback: {
-      rewrites: [
-        { from: /^\/auth/, to: '/terms-and-conditions/auth.html' },
-        { from: /./, to: '/terms-and-conditions/index.html' }
-      ]
-    }
+      )
   },
   module: {
     rules: [

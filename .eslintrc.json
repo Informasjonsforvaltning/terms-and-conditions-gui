@@ -13,6 +13,11 @@
     "plugin:import/typescript",
     "plugin:jsx-a11y/strict"
   ],
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -54,7 +59,8 @@
           "./webpack/*",
           "./src/types/**/*",
           "./test/**/*",
-          "**/__tests__/**/*"
+          "**/__tests__/**/*",
+          "**/src/**/*.test.jsx"
         ]
       }
     ],
@@ -93,6 +99,7 @@
     "react/no-unused-state": "off",
     "react/jsx-indent": "off",
     "react/prop-types": "off",
+    "react/require-default-props": "off",
     "react/jsx-curly-newline": "off",
     "no-use-before-define": "off",
     "no-console": [
