@@ -9,7 +9,8 @@ import Button from '@fellesdatakatalog/button';
 
 import env from '../../../../../../env';
 
-import { withAuth, Props as AuthProps } from '../../../../../../providers/auth';
+import { withAuth } from '../../../../../../providers/auth';
+import { authService } from '../../../../../../services/auth/auth-service';
 
 import withTermsAndConditions, {
   Props as TermsAndConditionsProps
@@ -31,10 +32,9 @@ interface RouteParams {
   organizationId: string;
 }
 
-interface Props extends AuthProps, TermsAndConditionsProps {}
+interface Props extends TermsAndConditionsProps {}
 
 const TermsAndConditionsPage: FC<Props> = ({
-  authService,
   termsAndConditions,
   acceptation,
   termsAndConditionsActions: {
@@ -60,7 +60,7 @@ const TermsAndConditionsPage: FC<Props> = ({
     authService.hasOrganizationAdminPermission(organizationId);
 
   const acceptorName =
-    authService.getUserProfile()?.name === acceptation?.acceptorName
+    authService.getUser()?.name === acceptation?.acceptorName
       ? 'Du'
       : acceptation?.acceptorName;
   const acceptDate = formatDate(
@@ -73,7 +73,7 @@ const TermsAndConditionsPage: FC<Props> = ({
     acceptTermsAndConditions(
       {
         orgId: organizationId,
-        acceptorName: authService.getUserProfile()?.name ?? '',
+        acceptorName: authService.getUser()?.name ?? '',
         acceptDate: new Date().toISOString(),
         acceptedVersion: termsAndConditions?.version ?? 'latest'
       },

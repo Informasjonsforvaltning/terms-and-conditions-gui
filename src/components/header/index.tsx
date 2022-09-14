@@ -6,9 +6,8 @@ import { ThemeProfile } from '@fellesdatakatalog/theme';
 
 import env from '../../env';
 
-import { withAuth, Props as AuthProps } from '../../providers/auth';
-
-interface Props extends AuthProps {}
+import { withAuth } from '../../providers/auth';
+import { authService } from '../../services/auth/auth-service';
 
 const {
   ADMIN_GUI_HOST,
@@ -17,8 +16,8 @@ const {
   SKE_THEME_PROFILE
 } = env;
 
-const Header: FC<Props> = ({ authService }) => {
-  const signOut = () => authService.signOut();
+const Header = () => {
+  const signOut = () => authService.logout();
 
   const isSkatteetatenThemeProfile =
     authService
@@ -35,7 +34,7 @@ const Header: FC<Props> = ({ authService }) => {
     <HeaderBase
       homeUrl={FDK_REGISTRATION_BASE_URI}
       themeProfile={themeProfile}
-      username={authService.getUserProfile()?.name}
+      username={authService.getUser()?.name}
       onLogout={signOut}
       skeHomeText='Bruksvilkår'
     >
