@@ -5,7 +5,7 @@ import createSagaMiddleware from 'redux-saga';
 import RootReducer from './reducer';
 import RootSaga from './saga';
 
-import AuthService from '../../../services/auth';
+import AuthService from '../../../services/auth/auth-service';
 
 const sagaMiddleware = createSagaMiddleware({
   context: {

@@ -4,7 +4,8 @@ import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
 
 import env from '../../../../env';
 
-import { withAuth, Props as AuthProps } from '../../../../providers/auth';
+import { withAuth } from '../../../../providers/auth';
+import { authService } from '../../../../services/auth/auth-service';
 
 import ProtectedRoute from '../../../../components/protected-route';
 import AbsoluteRedirect from '../../../../components/absolute-redirect';
@@ -15,9 +16,7 @@ const pages = {
   termsAndConditions: lazy(() => import('./pages/terms-and-conditions-page'))
 };
 
-interface Props extends AuthProps {}
-
-const TermsAndConditionsRouter: FC<Props> = ({ authService }) => {
+const TermsAndConditionsRouter = () => {
   const { path } = useRouteMatch();
 
   const isAuthorised = authService.isAuthenticated();

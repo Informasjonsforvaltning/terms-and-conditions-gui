@@ -10,7 +10,7 @@ import {
   ACCEPT_TERMS_AND_CONDITIONS_REQUESTED
 } from './action-types';
 
-import AuthService from '../../../services/auth';
+import AuthService from '../../../services/auth/auth-service';
 
 const { TERMS_AND_CONDITIONS_HOST } = env;
 
