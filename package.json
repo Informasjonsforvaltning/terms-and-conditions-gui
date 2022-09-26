@@ -113,7 +113,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@fellesdatakatalog/alert": "^0.1.10",
+    "@fellesdatakatalog/alert": "^0.1.11",
     "@fellesdatakatalog/breadcrumbs": "^0.2.4",
     "@fellesdatakatalog/button": "^0.2.7",
     "@fellesdatakatalog/internal-footer": "^0.3.13",
