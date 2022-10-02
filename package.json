@@ -119,7 +119,7 @@
     "@fellesdatakatalog/internal-footer": "^0.3.14",
     "@fellesdatakatalog/internal-header": "^0.5.4",
     "@fellesdatakatalog/link": "^0.2.10",
-    "@fellesdatakatalog/theme": "^0.5.1",
+    "@fellesdatakatalog/theme": "^0.5.2",
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "axios": "^0.27.2",
