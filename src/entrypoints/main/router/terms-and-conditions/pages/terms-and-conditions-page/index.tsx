@@ -49,15 +49,13 @@ const TermsAndConditionsPage: FC<Props> = ({
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const isAdminUser =
-    authService.hasOrganizationAdminPermission(organizationId);
+  const hasWriteAccess =
+    authService.hasOrganizationWritePermission(organizationId);
   const latestTermsAccepted =
     authService.hasAcceptedLatestTermsAndConditions(organizationId);
 
-  const hasOrganisationAccess =
-    authService.hasOrganizationReadPermission(organizationId) ||
-    authService.hasOrganizationWritePermission(organizationId) ||
-    authService.hasOrganizationAdminPermission(organizationId);
+  const hasReadAccess =
+    authService.hasOrganizationReadPermission(organizationId);
 
   const acceptorName =
     authService.getUser()?.name === acceptation?.acceptorName
@@ -86,7 +84,7 @@ const TermsAndConditionsPage: FC<Props> = ({
     getLatestAcceptedTermsAndConditions(organizationId);
   }, []);
 
-  return hasOrganisationAccess ? (
+  return hasReadAccess ? (
     <>
       <Breadcrumbs as={SC.Breadcrumbs}>
         <Breadcrumb>
@@ -114,7 +112,7 @@ const TermsAndConditionsPage: FC<Props> = ({
         <SC.TermsAndConditions>
           {parse(termsAndConditions?.text ?? '')}
         </SC.TermsAndConditions>
-        {isAdminUser && (
+        {hasWriteAccess && (
           <SC.Agreement>
             <Checkbox
               name='terms-and-conditions'
