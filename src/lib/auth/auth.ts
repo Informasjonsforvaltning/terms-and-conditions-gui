@@ -118,13 +118,15 @@ export class Auth {
     this.hasResourceRole({ resource: 'organization', resourceId: orgNr, role });
 
   hasOrganizationReadPermission: (orgNr: string) => boolean = (orgNr: string) =>
+    this.hasSystemAdminPermission() ||
     !!this.getResourceRoles().find(
       ({ resource, resourceId }) =>
         resource === 'organization' && resourceId === orgNr
     );
 
   hasOrganizationWritePermission = (orgNr: string) =>
-    this.hasOrganizationRole({ orgNr, role: 'admin' });
+    this.hasOrganizationAdminPermission(orgNr) ||
+    this.hasOrganizationRole({ orgNr, role: 'write' });
 
   hasOrganizationAdminPermission = (orgNr: string) =>
     this.hasOrganizationRole({ orgNr, role: 'admin' });
@@ -138,11 +140,7 @@ export class Auth {
 
   isReadOnlyUser = (orgNr: string): boolean =>
     this.hasOrganizationReadPermission(orgNr) &&
-    !(
-      this.hasOrganizationWritePermission(orgNr) ||
-      this.hasOrganizationAdminPermission(orgNr) ||
-      this.hasSystemAdminPermission()
-    );
+    !this.hasOrganizationWritePermission(orgNr);
 
   hasAcceptedLatestTermsAndConditions = (
     organizationNumber: string
