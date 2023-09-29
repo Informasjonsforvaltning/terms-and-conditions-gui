@@ -49,8 +49,7 @@ const TermsAndConditionsPage: FC<Props> = ({
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const hasWriteAccess =
-    authService.hasOrganizationWritePermission(organizationId);
+  const hasAdminAccess = authService.hasOrganizationAdminPermission(organizationId);
   const latestTermsAccepted =
     authService.hasAcceptedLatestTermsAndConditions(organizationId);
 
@@ -112,7 +111,7 @@ const TermsAndConditionsPage: FC<Props> = ({
         <SC.TermsAndConditions>
           {parse(termsAndConditions?.text ?? '')}
         </SC.TermsAndConditions>
-        {hasWriteAccess && (
+        {hasAdminAccess && (
           <SC.Agreement>
             <Checkbox
               name='terms-and-conditions'
