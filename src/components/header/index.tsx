@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import HeaderBase from '@fellesdatakatalog/internal-header';
 import Link from '@fellesdatakatalog/link';
 import { ThemeProfile } from '@fellesdatakatalog/theme';
+import { useLocation } from 'react-router-dom';
 
 import env from '../../env';
 
@@ -13,7 +14,8 @@ const {
   ADMIN_GUI_HOST,
   FDK_REGISTRATION_BASE_URI,
   SEARCH_HOST,
-  SKE_THEME_PROFILE
+  SKE_THEME_PROFILE,
+  CATALOG_ADMIN_BASE_URI
 } = env;
 
 const Header = () => {
@@ -30,6 +32,20 @@ const Header = () => {
     ? ThemeProfile.SKE
     : ThemeProfile.FDK;
 
+  const showManageConceptCatalogsUrl = () => {
+    const resourceRoles = authService.getResourceRoles();
+    const location = useLocation();
+    const pathParts = location.pathname.split('/');
+    const currentCatalogId = pathParts[2];
+
+    return resourceRoles.some(role => {
+      const roleCatalogId = role?.resourceId;
+      return authService.hasOrganizationAdminPermission(
+        currentCatalogId || roleCatalogId
+      );
+    });
+  };
+
   return (
     <HeaderBase
       homeUrl={FDK_REGISTRATION_BASE_URI}
@@ -37,6 +53,8 @@ const Header = () => {
       username={authService.getUser()?.name}
       onLogout={signOut}
       skeHomeText='Bruksvilkår'
+      showManageConceptCatalogsUrl={showManageConceptCatalogsUrl()}
+      manageConceptCatalogsUrl={CATALOG_ADMIN_BASE_URI}
     >
       <Link href={`${SEARCH_HOST}/guidance`}>Registrere data</Link>
       <Link href={ADMIN_GUI_HOST}>Høste data</Link>

@@ -49,7 +49,8 @@ const TermsAndConditionsPage: FC<Props> = ({
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const hasAdminAccess = authService.hasOrganizationAdminPermission(organizationId);
+  const hasAdminAccess =
+    authService.hasOrganizationAdminPermission(organizationId);
   const latestTermsAccepted =
     authService.hasAcceptedLatestTermsAndConditions(organizationId);
 
