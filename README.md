@@ -40,6 +40,7 @@ An interface for FDK terms and conditions.
 - `SEARCH_HOST` - FDK portal main page URL
 - `ADMIN_GUI_HOST` - FDK admin main page URL
 - `SKE_THEME_PROFILE` - comma-separated list of organization numbers
+- `CATALOG_ADMIN_BASE_URI` - FDK catalog administration interface
 
 ## Contributing
 

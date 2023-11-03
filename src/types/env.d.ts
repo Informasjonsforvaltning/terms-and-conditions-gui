@@ -8,4 +8,5 @@ export interface EnvironmentVariables {
   SEARCH_HOST: string;
   ADMIN_GUI_HOST: string;
   SKE_THEME_PROFILE: string;
+  CATALOG_ADMIN_BASE_URI: string;
 }

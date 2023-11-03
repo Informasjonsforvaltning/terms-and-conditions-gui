@@ -13,6 +13,8 @@ export default validateEnv(
       'https://terms.staging.fellesdatakatalog.digdir.no',
     SEARCH_HOST: 'https://staging.fellesdatakatalog.digdir.no',
     ADMIN_GUI_HOST: 'https://admin.staging.fellesdatakatalog.digdir.no',
+    CATALOG_ADMIN_BASE_URI:
+      'https://catalog-admin.staging.fellesdatakatalog.digdir.no',
     SKE_THEME_PROFILE: '910244132'
   }
 );
