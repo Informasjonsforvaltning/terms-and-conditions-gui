@@ -42,10 +42,7 @@ const configuration: Configuration = {
             loader: 'babel-loader'
           },
           {
-            loader: 'react-svg-loader',
-            options: {
-              jsx: true
-            }
+            loader: '@svgr/webpack'
           }
         ]
       },
