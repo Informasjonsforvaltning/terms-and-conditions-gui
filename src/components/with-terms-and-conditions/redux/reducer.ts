@@ -7,11 +7,11 @@ import {
   ACCEPT_TERMS_AND_CONDITIONS_SUCCEEDED
 } from './action-types';
 
-import type { Actions } from '../../../types';
+import type { Acceptation, Actions, TermsAndConditions } from '../../../types';
 
 const initialState = fromJS({
-  termsAndConditions: undefined,
-  acceptation: undefined
+  termsAndConditions: {} as TermsAndConditions,
+  acceptation: {} as Acceptation
 });
 
 export default function reducer(

@@ -1,4 +1,4 @@
-FROM node:14.17.5 AS build
+FROM node:18.18.2 AS build
 WORKDIR /app
 COPY package.json package-lock.json audit-resolve.json ./
 RUN npm install -g npm-audit-resolver
