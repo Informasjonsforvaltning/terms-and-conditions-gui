@@ -132,6 +132,7 @@
     "html-react-parser": "^1.4.12",
     "immutable": "^4.0.0-rc.12",
     "keycloak-js": "^25.0.5",
+    "npm-audit-resolver": "^3.0.0-RC.0",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "react": "^17.0.2",
