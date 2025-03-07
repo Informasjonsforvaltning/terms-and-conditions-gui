@@ -127,18 +127,18 @@
     },
     "1098583|@skatteetaten/frontend-components>axios": {
       "decision": "ignore",
-      "madeAt": 1726127734139,
-      "expiresAt": 1728719715549
+      "madeAt": 1741268590073,
+      "expiresAt": 1743860567604
     },
     "1098583|axios": {
       "decision": "ignore",
-      "madeAt": 1726127734139,
-      "expiresAt": 1728719715549
+      "madeAt": 1741268590073,
+      "expiresAt": 1743860567604
     },
     "1098681|lint-staged>micromatch": {
       "decision": "ignore",
-      "madeAt": 1726127741160,
-      "expiresAt": 1728719715549
+      "madeAt": 1741268597081,
+      "expiresAt": 1743860567604
     }
   },
   "rules": {},
