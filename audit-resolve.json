@@ -132,13 +132,38 @@
     },
     "1098583|axios": {
       "decision": "ignore",
-      "madeAt": 1741268590073,
-      "expiresAt": 1743860567604
+      "madeAt": 1741703371630,
+      "expiresAt": 1744295353801
     },
     "1098681|lint-staged>micromatch": {
       "decision": "ignore",
       "madeAt": 1741268597081,
       "expiresAt": 1743860567604
+    },
+    "1098583|@fellesdatakatalog/internal-footer>@skatteetaten/frontend-components>axios": {
+      "decision": "ignore",
+      "madeAt": 1741703371630,
+      "expiresAt": 1744295353801
+    },
+    "1098583|@fellesdatakatalog/internal-header>@skatteetaten/frontend-components>axios": {
+      "decision": "ignore",
+      "madeAt": 1741703371630,
+      "expiresAt": 1744295353801
+    },
+    "1102472|@fellesdatakatalog/internal-footer>@skatteetaten/frontend-components>axios": {
+      "decision": "ignore",
+      "madeAt": 1741703375510,
+      "expiresAt": 1744295353801
+    },
+    "1102472|@fellesdatakatalog/internal-header>@skatteetaten/frontend-components>axios": {
+      "decision": "ignore",
+      "madeAt": 1741703375510,
+      "expiresAt": 1744295353801
+    },
+    "1102472|axios": {
+      "decision": "ignore",
+      "madeAt": 1741703375510,
+      "expiresAt": 1744295353801
     }
   },
   "rules": {},

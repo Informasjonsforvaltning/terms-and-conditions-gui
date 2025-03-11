@@ -143,6 +143,14 @@ const TermsAndConditionsPage: FC<Props> = ({
             )}
           </SC.Agreement>
         )}
+        {!hasAdminAccess && !latestTermsAccepted && (
+          <SC.Alert severity={Severity.WARNING}>
+            <div>
+              Du må ha rollen <i>Virksomhetsadministrator</i> for å kunne
+              akseptere bruksvilkår på vegne av virksomheten.
+            </div>
+          </SC.Alert>
+        )}
       </SC.Page>
     </>
   ) : (
