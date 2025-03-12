@@ -109,6 +109,14 @@ const TermsAndConditionsPage: FC<Props> = ({
             </div>
           </SC.Alert>
         )}
+        {!hasAdminAccess && !latestTermsAccepted && (
+          <SC.Alert severity={Severity.WARNING}>
+            <div>
+              Du må ha rollen <i>Virksomhetsadministrator</i> for å kunne
+              akseptere bruksvilkår på vegne av virksomheten.
+            </div>
+          </SC.Alert>
+        )}
         <SC.TermsAndConditions>
           {parse(termsAndConditions?.text ?? '')}
         </SC.TermsAndConditions>
@@ -142,14 +150,6 @@ const TermsAndConditionsPage: FC<Props> = ({
               </SC.Alert>
             )}
           </SC.Agreement>
-        )}
-        {!hasAdminAccess && !latestTermsAccepted && (
-          <SC.Alert severity={Severity.WARNING}>
-            <div>
-              Du må ha rollen <i>Virksomhetsadministrator</i> for å kunne
-              akseptere bruksvilkår på vegne av virksomheten.
-            </div>
-          </SC.Alert>
         )}
       </SC.Page>
     </>
