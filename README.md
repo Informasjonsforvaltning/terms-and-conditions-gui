@@ -1,62 +1,46 @@
-# FDK Terms and Conditions GUI
+# Terms and Conditions GUI
 
 ## Description
 
-An interface for FDK terms and conditions.
+A web application for accepting terms and conditions and part of the [registration solutions](https://catalog-portal.fellesdatakatalog.digdir.no/).
 
-## Installation and Usage
+For a broader understanding of the system’s context, refer to the [architecture documentation](https://github.com/Informasjonsforvaltning/architecture-documentation) wiki. For more specific
+context on this application, see the [Registration](https://github.com/Informasjonsforvaltning/architecture-documentation/wiki/Architecture-documentation#registration) subsystem section.
 
-- Required tools to run this project:
-  - Node.js and npm to run locally on a host machine
-  - Docker and Docker Compose to run locally in a container
+## Getting started
 
-#### Running application locally on a host machine
+### Prerequisites
+- [Node.js](https://nodejs.org/en/download/) >=18.16
+- [npm](https://www.npmjs.com/get-npm) >=10.2.3
+- [Docker](https://www.docker.com/get-started)
+- [docker-compose](https://docs.docker.com/compose/install/)
 
-- Install dependencies by running `npm install`
-- Run `npm start` to start local development server
+### Running locally (development)
 
-#### Running application in a Docker container
+Clone the repository:
 
-- Build a Docker container using the following command:
-  - `docker build -t terms-and-conditions-gui .`
-- Run the container using the following comand:
-  - `docker run -d -p 8181:8080 -e NAMESPACE -e OIDC_ISSUER -e FDK_REGISTRATION_BASE_URI -e TERMS_AND_CONDITIONS_HOST -e SEARCH_HOST -e ADMIN_GUI_HOST -e SKE_THEME_PROFILE terms-and-conditions-gui`
+```bash
+git clone https://github.com/Informasjonsforvaltning/terms-and-conditions-gui.git
+cd terms-and-conditions-gui
+```
 
-#### Running application using Docker Compose
+Install dependencies:
 
-- Run the application using the following command:
-  - `docker-compose up -d`
+```bash
+npm install
+```
 
-## Environment Variables
+Start the development server:
 
-- `NAMESPACE` - Environment namespace
-  - `development`
-  - `staging`
-  - `demo`
-  - `prod`
-- `OIDC_ISSUER` - OIDC issuer URI
-- `FDK_REGISTRATION_BASE_URI` - FDK registraion main page URL
-- `TERMS_AND_CONDITIONS_HOST` - Terms and conditions API hostname
-- `SEARCH_HOST` - FDK portal main page URL
-- `ADMIN_GUI_HOST` - FDK admin main page URL
-- `SKE_THEME_PROFILE` - comma-separated list of organization numbers
-- `CATALOG_ADMIN_BASE_URI` - FDK catalog administration interface
+```bash
+npm run start
+```
 
-## Contributing
+Go to http://localhost:8080
 
-#### Branching Strategy
+### Run locally using docker compose
+```bash
+docker compose up -d --build
+```
 
-Whenever a new change is to be implemented, follow these steps:
-
-- Create a new branch from the master branch
-- Implement and commit changes
-- Create a pull request for code review
-
-#### Commits
-
-This repository uses conventional commmit format. In order to commit, follow these steps:
-
-- Stage files to be committed
-- Run `npm run commit` script
-
-Do not use `--no-verify` flag when making commits.
+Go to http://localhost:8181
