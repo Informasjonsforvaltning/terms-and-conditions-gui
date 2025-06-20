@@ -2,15 +2,11 @@ import React, { memo, FC, Suspense, lazy } from 'react';
 import { compose } from 'redux';
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
 
-import env from '../../../../env';
-
 import { withAuth } from '../../../../providers/auth';
 import { authService } from '../../../../services/auth/auth-service';
 
 import ProtectedRoute from '../../../../components/protected-route';
 import AbsoluteRedirect from '../../../../components/absolute-redirect';
-
-const { FDK_REGISTRATION_BASE_URI } = env;
 
 const pages = {
   termsAndConditions: lazy(() => import('./pages/terms-and-conditions-page'))
@@ -29,7 +25,7 @@ const TermsAndConditionsRouter = () => {
           path={`${path}/:organizationId(\\d{9})`}
           component={pages.termsAndConditions}
         />
-        <AbsoluteRedirect to={FDK_REGISTRATION_BASE_URI} />
+        <AbsoluteRedirect to='https://registrering.staging.fellesdatakatalog.digdir.no' />
       </Switch>
     </Suspense>
   );

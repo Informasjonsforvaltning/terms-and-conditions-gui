@@ -12,7 +12,6 @@ import { authService } from '../../services/auth/auth-service';
 
 const {
   ADMIN_GUI_HOST,
-  FDK_REGISTRATION_BASE_URI,
   SEARCH_HOST,
   SKE_THEME_PROFILE,
   CATALOG_ADMIN_BASE_URI
@@ -48,7 +47,7 @@ const Header = () => {
 
   return (
     <HeaderBase
-      homeUrl={FDK_REGISTRATION_BASE_URI}
+      homeUrl='https://registrering.staging.fellesdatakatalog.digdir.no'
       themeProfile={themeProfile}
       username={authService.getUser()?.name}
       onLogout={signOut}

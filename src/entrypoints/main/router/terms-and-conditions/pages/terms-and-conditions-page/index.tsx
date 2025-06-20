@@ -7,8 +7,6 @@ import Breadcrumbs, { Breadcrumb } from '@fellesdatakatalog/breadcrumbs';
 import { Severity } from '@fellesdatakatalog/alert';
 import Button from '@fellesdatakatalog/button';
 
-import env from '../../../../../../env';
-
 import { withAuth } from '../../../../../../providers/auth';
 import { authService } from '../../../../../../services/auth/auth-service';
 
@@ -25,8 +23,6 @@ import {
 } from '../../../../../../utils/date-utils';
 
 import SC from './styled';
-
-const { FDK_REGISTRATION_BASE_URI } = env;
 
 interface RouteParams {
   organizationId: string;
@@ -75,7 +71,10 @@ const TermsAndConditionsPage: FC<Props> = ({
         acceptDate: new Date().toISOString(),
         acceptedVersion: termsAndConditions?.version ?? 'latest'
       },
-      () => location.assign(FDK_REGISTRATION_BASE_URI)
+      () =>
+        location.assign(
+          'https://registrering.staging.fellesdatakatalog.digdir.no'
+        )
     );
   };
 
@@ -88,7 +87,10 @@ const TermsAndConditionsPage: FC<Props> = ({
     <>
       <Breadcrumbs as={SC.Breadcrumbs}>
         <Breadcrumb>
-          <Link to={FDK_REGISTRATION_BASE_URI} as={RouteLink}>
+          <Link
+            to='https://registrering.staging.fellesdatakatalog.digdir.no'
+            as={RouteLink}
+          >
             Alle kataloger
           </Link>
         </Breadcrumb>
@@ -154,7 +156,7 @@ const TermsAndConditionsPage: FC<Props> = ({
       </SC.Page>
     </>
   ) : (
-    <AbsoluteRedirect to={FDK_REGISTRATION_BASE_URI} />
+    <AbsoluteRedirect to='https://registrering.staging.fellesdatakatalog.digdir.no' />
   );
 };
 
